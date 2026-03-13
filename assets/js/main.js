@@ -1,78 +1,94 @@
-/**
-* Template Name: Maundy - v4.6.0
-* Template URL: https://bootstrapmade.com/maundy-free-coming-soon-bootstrap-theme/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-(function() {
+(function () {
   "use strict";
 
-  /**
-   * Easy selector helper function
-   */
-  const select = (el, all = false) => {
-    el = el.trim()
-    if (all) {
-      return [...document.querySelectorAll(el)]
-    } else {
-      return document.querySelector(el)
-    }
-  }
+  const body = document.body;
+  const navToggle = document.querySelector(".nav-toggle");
+  const nav = document.querySelector(".site-nav");
+  const navLinks = document.querySelectorAll(".site-nav a");
+  const revealItems = document.querySelectorAll("[data-reveal]");
+  const heroGrid = document.querySelector(".hero-grid");
+  const interactiveSurfaces = document.querySelectorAll(".interactive-surface");
 
-  /**
-   * Easy event listener function
-   */
-  const on = (type, el, listener, all = false) => {
-    let selectEl = select(el, all)
-    if (selectEl) {
-      if (all) {
-        selectEl.forEach(e => e.addEventListener(type, listener))
-      } else {
-        selectEl.addEventListener(type, listener)
+  if (navToggle && nav) {
+    const setNavState = (open) => {
+      body.classList.toggle("nav-open", open);
+      navToggle.setAttribute("aria-expanded", String(open));
+    };
+
+    navToggle.addEventListener("click", () => {
+      const next = !body.classList.contains("nav-open");
+      setNavState(next);
+    });
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => setNavState(false));
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        setNavState(false);
       }
-    }
+    });
   }
 
-  /**
-   * Easy on scroll event listener 
-   */
-  const onscroll = (el, listener) => {
-    el.addEventListener('scroll', listener)
+  if (heroGrid && window.matchMedia("(pointer: fine)").matches) {
+    const updateHeroMotion = (event) => {
+      const rect = heroGrid.getBoundingClientRect();
+      const x = event.clientX - rect.left - rect.width / 2;
+      const y = event.clientY - rect.top - rect.height / 2;
+
+      heroGrid.style.setProperty("--mx", `${x * 0.08}px`);
+      heroGrid.style.setProperty("--my", `${y * 0.08}px`);
+    };
+
+    const resetHeroMotion = () => {
+      heroGrid.style.setProperty("--mx", "0px");
+      heroGrid.style.setProperty("--my", "0px");
+    };
+
+    heroGrid.addEventListener("pointermove", updateHeroMotion);
+    heroGrid.addEventListener("pointerleave", resetHeroMotion);
   }
 
-  /**
-   * Back to top button
-   */
-  let backtotop = select('.back-to-top')
-  if (backtotop) {
-    const toggleBacktotop = () => {
-      if (window.scrollY > 100) {
-        backtotop.classList.add('active')
-      } else {
-        backtotop.classList.remove('active')
+  if (interactiveSurfaces.length > 0 && window.matchMedia("(pointer: fine)").matches) {
+    interactiveSurfaces.forEach((surface) => {
+      const updateSurface = (event) => {
+        const rect = surface.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 100;
+        const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+        surface.style.setProperty("--sx", `${x}%`);
+        surface.style.setProperty("--sy", `${y}%`);
+      };
+
+      const resetSurface = () => {
+        surface.style.setProperty("--sx", "50%");
+        surface.style.setProperty("--sy", "50%");
+      };
+
+      surface.addEventListener("pointermove", updateSurface);
+      surface.addEventListener("pointerleave", resetSurface);
+    });
+  }
+
+  if ("IntersectionObserver" in window && revealItems.length > 0) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.18,
+        rootMargin: "0px 0px -40px 0px",
       }
-    }
-    window.addEventListener('load', toggleBacktotop)
-    onscroll(document, toggleBacktotop)
+    );
+
+    revealItems.forEach((item) => observer.observe(item));
+  } else {
+    revealItems.forEach((item) => item.classList.add("is-visible"));
   }
-
-  /**
-   * Countdown timer
-   */
-  let countdown = select('.countdown');
-  const output = countdown.innerHTML;
-
-  const countDownDate = function() {
-    let timeleft = new Date(countdown.getAttribute('data-count')).getTime() - new Date().getTime();
-
-    let days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
-    let hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    let minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
-    let seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
-
-    countdown.innerHTML = output.replace('%d', days).replace('%h', hours).replace('%m', minutes).replace('%s', seconds);
-  }
-  countDownDate();
-  setInterval(countDownDate, 1000);
-
-})()
+})();

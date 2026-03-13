@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 860" role="img" aria-labelledby="title desc">
+  <title id="title">OpenDataX hero background</title>
+  <desc id="desc">Abstract wide background with futuristic AI and data flow shapes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05103b"/>
+      <stop offset="55%" stop-color="#071956"/>
+      <stop offset="100%" stop-color="#041239"/>
+    </linearGradient>
+    <radialGradient id="blueGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#49a5ff" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#49a5ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="greenGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2fd17d" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#2fd17d" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="meshA" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4aa5ff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#4aa5ff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="meshB" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#31ce7d" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#31ce7d" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="860" fill="url(#bg)"/>
+
+  <g opacity="0.12" stroke="#b9d0ff">
+    <path d="M0 140H1600"/>
+    <path d="M0 280H1600"/>
+    <path d="M0 420H1600"/>
+    <path d="M0 560H1600"/>
+    <path d="M0 700H1600"/>
+    <path d="M180 0V860"/>
+    <path d="M360 0V860"/>
+    <path d="M540 0V860"/>
+    <path d="M720 0V860"/>
+    <path d="M900 0V860"/>
+    <path d="M1080 0V860"/>
+    <path d="M1260 0V860"/>
+    <path d="M1440 0V860"/>
+  </g>
+
+  <circle cx="1180" cy="160" r="220" fill="url(#blueGlow)"/>
+  <circle cx="420" cy="650" r="240" fill="url(#greenGlow)"/>
+  <circle cx="860" cy="360" r="260" fill="url(#blueGlow)" opacity="0.6"/>
+
+  <g fill="none" stroke-linecap="round">
+    <path d="M130 628C298 540 426 500 590 504C734 508 858 456 988 336C1094 236 1232 158 1454 170" stroke="#69b3ff" stroke-opacity="0.75" stroke-width="3"/>
+    <path d="M194 710C354 648 514 642 678 680C830 716 962 684 1144 554C1262 470 1362 422 1488 404" stroke="#37cf80" stroke-opacity="0.72" stroke-width="3"/>
+    <path d="M262 248C420 314 560 328 716 286C874 244 996 156 1140 120C1264 88 1382 102 1516 178" stroke="#69b3ff" stroke-opacity="0.5" stroke-width="2.4"/>
+  </g>
+
+  <g fill="#eef4ff">
+    <circle cx="130" cy="628" r="6"/>
+    <circle cx="590" cy="504" r="7"/>
+    <circle cx="988" cy="336" r="7"/>
+    <circle cx="1454" cy="170" r="6"/>
+    <circle cx="194" cy="710" r="5"/>
+    <circle cx="678" cy="680" r="7"/>
+    <circle cx="1144" cy="554" r="6"/>
+    <circle cx="1488" cy="404" r="5"/>
+  </g>
+
+  <g opacity="0.3">
+    <polygon points="950,210 1160,140 1330,290 1112,356" fill="url(#meshA)"/>
+    <polygon points="1080,462 1320,392 1462,580 1220,664" fill="url(#meshB)"/>
+    <polygon points="250,478 476,432 620,610 396,658" fill="url(#meshB)"/>
+  </g>
+
+  <g fill="none" stroke="#d5e3ff" opacity="0.45">
+    <rect x="1018" y="236" width="198" height="92" rx="18"/>
+    <rect x="1088" y="478" width="248" height="112" rx="20"/>
+    <rect x="286" y="516" width="198" height="92" rx="18"/>
+  </g>
+
+  <g fill="#dce9ff" opacity="0.72">
+    <rect x="1046" y="262" width="88" height="8" rx="4"/>
+    <rect x="1046" y="282" width="132" height="8" rx="4"/>
+    <rect x="1046" y="302" width="108" height="8" rx="4"/>
+    <rect x="1118" y="506" width="96" height="8" rx="4"/>
+    <rect x="1118" y="526" width="170" height="8" rx="4"/>
+    <rect x="1118" y="546" width="146" height="8" rx="4"/>
+    <rect x="314" y="542" width="74" height="8" rx="4"/>
+    <rect x="314" y="562" width="122" height="8" rx="4"/>
+  </g>
+</svg>
