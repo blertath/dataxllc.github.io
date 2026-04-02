@@ -567,8 +567,15 @@ button {
   gap: 18px;
 }
 
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
 .service-card,
 .package-card,
+.work-card,
 .reference-card,
 .contact-card {
   border: 1px solid rgba(156, 186, 255, 0.14);
@@ -590,6 +597,15 @@ button {
   background:
     linear-gradient(180deg, rgba(11, 26, 82, 0.62), rgba(7, 17, 54, 0.62)),
     rgba(6, 12, 38, 0.24);
+  transition: transform 220ms ease, border-color 220ms ease;
+}
+
+.work-card {
+  min-height: 100%;
+  padding: 26px;
+  background:
+    linear-gradient(180deg, rgba(10, 24, 76, 0.68), rgba(6, 15, 48, 0.68)),
+    rgba(5, 12, 38, 0.26);
   transition: transform 220ms ease, border-color 220ms ease;
 }
 
@@ -621,6 +637,20 @@ button {
   font-weight: 800;
 }
 
+.work-card span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 42px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(95, 169, 255, 0.14);
+  color: var(--accent-blue);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
 .service-card h3 {
   margin-top: 18px;
   font-size: 1.32rem;
@@ -635,11 +665,23 @@ button {
   line-height: 1.08;
 }
 
+.work-card h3 {
+  margin-top: 18px;
+  font-size: 1.28rem;
+  line-height: 1.08;
+}
+
 .service-card p {
   margin: 14px 0 0;
 }
 
 .package-card p {
+  margin: 14px 0 0;
+  color: var(--muted);
+  line-height: 1.72;
+}
+
+.work-card p {
   margin: 14px 0 0;
   color: var(--muted);
   line-height: 1.72;
@@ -653,6 +695,18 @@ button {
 .package-card:hover {
   transform: translateY(-4px);
   border-color: rgba(95, 169, 255, 0.28);
+}
+
+.work-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(95, 169, 255, 0.28);
+}
+
+.work-card a {
+  display: inline-block;
+  margin-top: 18px;
+  color: var(--accent-blue);
+  font-weight: 800;
 }
 
 .bridge-grid,
@@ -992,6 +1046,7 @@ button {
   .contact-grid,
   .service-grid,
   .package-grid,
+  .work-grid,
   .reference-cards,
   .team-grid {
     grid-template-columns: 1fr;
